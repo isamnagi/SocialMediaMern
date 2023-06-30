@@ -2,7 +2,7 @@ import Post from "../models/Post.js";
 import User from "../models/User.js";
 
 /* CREATE */
-const createPost = async (req, res) => {
+export const createPost = async (req, res) => {
     try {
         const { userId, description, picturePath } = req.body;
         const user = await User.findById(userId);
@@ -27,7 +27,7 @@ const createPost = async (req, res) => {
 }
 
 /* READ */
-const getFeedPosts = async (req, res) => {
+export const getFeedPosts = async (req, res) => {
     try {
         const post = await Post.find();
         res.status(200).json(post);
@@ -36,7 +36,7 @@ const getFeedPosts = async (req, res) => {
     }
 }
 
-const getUserPosts = async (req, res) => {
+export const getUserPosts = async (req, res) => {
     try { 
         const { userId } = req.params.id;
         const post = await Post.find({ userId });
@@ -48,7 +48,7 @@ const getUserPosts = async (req, res) => {
 
 
 /* UPDATE */
-const likePost = async (req, res) => {
+export const likePost = async (req, res) => {
     try { 
         const { id } = req.params;
         const { userId } = req.body;

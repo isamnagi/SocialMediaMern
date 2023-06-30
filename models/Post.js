@@ -3,15 +3,15 @@ import mongoose from "mongoose";
 const postSchema = new mongoose.Schema(
     {
         userId: {
-            Type: String,
+            type: String,
             required: true,
         },
         firstName: {
-            Type: String,
+            type: String,
             required: true,
         },
         lastName: {
-            Type: String,
+            type: String,
             required: true,
         },
         location: String,
@@ -19,11 +19,11 @@ const postSchema = new mongoose.Schema(
         picturePath: String,
         userPicturePath: String,
         likes: {
-            Type: Map,
+            type: Map,
             of: Boolean,
         },
         comments: {
-            Type: Array,
+            type: Array,
             default: [],
         }
     },
