@@ -63,8 +63,8 @@ app.use("/assets", express.static(path.join(__dirname, 'public/assets')));
     
     
     /* ADD DATA ONE TIME */
-    User.insertMany(users);
-    Post.insertMany(posts);
+    // User.insertMany(users);
+    // Post.insertMany(posts);
     })
     .catch((error) => console.log(`${error} did not connect`));
 
