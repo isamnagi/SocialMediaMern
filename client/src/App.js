@@ -9,7 +9,9 @@ function App() {
     <div className="app">
         <BrowserRouter>
             <Router>
-                
+                <Route path="/" element={<LoginPage />} />
+                <Route path="/home" element={<HomePage />} />
+                <Route path="/profile/:userId" element={<ProfilePage />} />
             </Router>
         </BrowserRouter>
     </div>
