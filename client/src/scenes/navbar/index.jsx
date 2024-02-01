@@ -18,32 +18,20 @@ import {
     Notifications,
     Help,
     Menu,
-<<<<<<< HEAD
     Close
-=======
->>>>>>> backup-branch
 } from "@mui/icons-material";
 import { useDispatch, useSelector } from "react-redux";
 import { setMode, setLogout } from "state";
 import { useNavigate } from "react-router-dom";
-<<<<<<< HEAD
 import FlexBetween from "components/FlexBetween";
-=======
-import FlexBetween from "componenets/FlexBetween";
-
->>>>>>> backup-branch
 
 const Navbar = () => {
     const [isMobileMenuToggled, setIsMobileMenuToggled] = useState(false);
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const user = useSelector((state) => state.user);
-<<<<<<< HEAD
     const isNonMobileScreens = useMediaQuery("(min-width: 1000px)");
     
-=======
-    const isNonMobileScreens = useMediaQuery("min-width: 1000px");
->>>>>>> backup-branch
     const theme = useTheme();
     const neutralLight = theme.palette.neutral.light;
     const dark = theme.palette.neutral.dark;
@@ -58,7 +46,6 @@ const Navbar = () => {
         <FlexBetween padding="1rem 6%" backgroundColor={alt}>
             <FlexBetween gap="1.75rem">
                 <Typography
-<<<<<<< HEAD
                     fontWeight="bold"
                     fontSize="clamp(1rem, 2rem, 2.25rem)"
                     color="primary"
@@ -69,32 +56,16 @@ const Navbar = () => {
                             cursor: "pointer",
                         },
                     }}
-=======
-                fontWeight="bold"
-                fontSize="clamp(1rem, 2rem, 2.25rem)"
-                color="primary"
-                onClick={() => navigate("/home")}
-                sx={{
-                    "&:hover": {
-                        color: primaryLight,
-                        cursor: "pointer",
-                    },
-                }}
->>>>>>> backup-branch
                 >    
                     Sociopedia
                 </Typography>
                 {isNonMobileScreens && (
-<<<<<<< HEAD
                     <FlexBetween 
                         backgroundColor={neutralLight} 
                         borderRadius="9px" 
                         gap="3rem" 
                         padding="0.1rem 1.5rem"
                         >
-=======
-                    <FlexBetween backgroundColor={neutralLight} borderRadius="9px" gap="3rem" padding="0.1rem 1.5 rem">
->>>>>>> backup-branch
                         <InputBase placeholder="Search..."/>
                         <IconButton>
                             <Search />
@@ -124,11 +95,7 @@ const Navbar = () => {
                             width: "150px",
                             borderRadius: "0.25rem",
                             p: "0.25rem 1rem",
-<<<<<<< HEAD
                             "& .MuiSvgIcon-root" : {
-=======
-                            "& .MuiSvgIcon-root:" : {
->>>>>>> backup-branch
                                 pr: "0.25rem",
                                 width: "3rem"
                             },
@@ -137,11 +104,7 @@ const Navbar = () => {
                         }
                         }}
                         input={<InputBase />}
-<<<<<<< HEAD
                         />
-=======
-                        >
->>>>>>> backup-branch
                             <MenuItem value={fullName}>
                                 <Typography>{fullName}</Typography>
                             </MenuItem>
@@ -149,7 +112,6 @@ const Navbar = () => {
                     </FormControl>
                 </FlexBetween>
             ) : (
-<<<<<<< HEAD
                 <IconButton
                     onClick={() => setIsMobileMenuToggled(!isMobileMenuToggled)}
                 >
@@ -220,12 +182,6 @@ const Navbar = () => {
                 </FlexBetween>
                     </Box>
             )}
-=======
-                <IconButton>
-                    onClick={() => setIsMobileMenuToggled(!isMobileMenuToggled)}
-                </IconButton>
-            )}
->>>>>>> backup-branch
         </FlexBetween>
         );
 };
