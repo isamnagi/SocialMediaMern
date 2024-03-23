@@ -8,7 +8,7 @@ const AdvertWidget = () => {
     const main = palette.neutral.main;
     const medium = palette.neutral.medium;
 
-    return = (
+    return (
         <WidgetWrapper>
             <FlexBetween>
                 <Typography color={dark} variant="h5" fontWeigth="500">
