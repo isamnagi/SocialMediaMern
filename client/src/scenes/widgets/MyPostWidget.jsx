@@ -24,7 +24,6 @@ import WidgetWrapper from "components/WidgetWrapper";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setPosts } from "state";
-import { themeSettings } from "theme";
 
 const MyPostWidget = ({ picturePath }) => {
     const dispatch = useDispatch();
@@ -81,7 +80,7 @@ const MyPostWidget = ({ picturePath }) => {
                     mt="1rem"
                     p="1rem"
                 >
-                    <DropZone
+                    <Dropzone
                                     acceptedFiles=".jpg, .jpeg, .png"
                                     multiple={false}
                                     onDrop={(acceptedFiles) =>
@@ -116,18 +115,18 @@ const MyPostWidget = ({ picturePath }) => {
                                             )}
                                             </FlexBetween>
                                         )}
-                        </DropZone>
+                        </Dropzone>
                     </Box>
             )}
 
-            <Diveder sx={{ "1.25rem 0"}} />
+            <Divider sx={{ margin: "1.25rem 0"}} />
 
             <FlexBetween>
                 <FlexBetween gap="0.25 rem" margin="1.25rem" onClick={() => setIsImage(!image)}>
                     <ImageOutlined sx={{color: mediumMain}} />
                     <Typography
                     color={mediumMain}
-                    sx={{ "&hover": {cursor: "pointer" color: medium}}}
+                    sx={{ "&hover": {cursor: "pointer", color: medium}}}
                     >
                         Image
                     </Typography>
@@ -155,8 +154,22 @@ const MyPostWidget = ({ picturePath }) => {
                         <MoreHorizOutlined sx={{ color:mediumMain}} />
                     </FlexBetween>
                     )}
+
+                    <Button
+                    disabled={!post}
+                    onClick={handlePost}
+                    sx={{
+                        color: palatte.background.alt,
+                        backgroundColor: palatte.primary.main,
+                        borderRadius: "3rem"
+                    }}
+                    >
+                        Post
+                    </Button>
             </FlexBetween>
         </WidgetWrapper>
     )
 
 }
+
+export default MyPostWidget;
