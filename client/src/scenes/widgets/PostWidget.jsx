@@ -46,7 +46,7 @@ const PostWidget = ({
         const updatedPost = response.json();
         dispatch(setPost({ post: updatedPost }));
     };
-}
+
 return (
     <WidgetWrapper m="2rem 0">
         <Friend
@@ -86,8 +86,8 @@ return (
                     </IconButton>
                     <Typograph>{comments.length}</Typograph>
                 </FlexBetween>
-
             </FlexBetween>
+
             <IconButton>
                 <ShareOutlined />
             </IconButton>
@@ -97,7 +97,7 @@ return (
                 {comments.map((comments, i) => (
                     <Box key={`${name}-${i}`}>
                         <Divider />
-                        <Typography sx={{ color: main, m="0.5rem 0", pl="1rem"}}>
+                        <Typography sx={{ color: main, m:"0.5rem 0", pl:"1rem"}}>
                             {comment}
                         </Typography>
                     </Box>
@@ -105,8 +105,8 @@ return (
                 <Divider />
             </Box>
         )}
-
-    </WidgetWrapper>
-)
+        </WidgetWrapper>
+    );
+};
 
 export default PostWidget;
