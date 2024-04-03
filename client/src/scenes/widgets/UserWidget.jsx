@@ -1,10 +1,10 @@
 import {
-    ManageAccountOutlined,
+    ManageAccountsOutlined,
     EditOutlined,
     LocationOnOutlined,
-    WorkoutOutlineOutlined,
+    WorkOutlineOutlined,
 } from "@mui/icons-material";
-import { Box, Typography, Diveider, useTheme } from "@mui/material";
+import { Box, Typography, Divider, useTheme } from "@mui/material";
 import UserImage from "components/UserImage";
 import FlexBetween from "components/FlexBetween";
 import WidgetWrapper from "components/WidgetWrapper";
@@ -13,7 +13,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const UserWidget = ({ userId, picturePath }) => {
-    cosnt [user, setUser] = useState(null);
+    const [user, setUser] = useState(null);
     const { palette } = useTheme();
     const navigate = useNavigate();
     const token = useSelector((state) => state.token);
@@ -27,7 +27,7 @@ const UserWidget = ({ userId, picturePath }) => {
             headers: { Authorization: `Bearer ${token}` },
         });
         const data = await response.json();
-        setUser(date);
+        setUser(data);
      };
 
      useEffect(() =>{
@@ -67,28 +67,31 @@ const UserWidget = ({ userId, picturePath }) => {
                             "&:hover":  {
                                 color: palette.primary.light,
                                 cursor: "pointer"
-                            }
-                        }}>
+                            },
+                        }}
+                        >
                             {firstName} {lastName}
                         </Typography>
                         <Typography color={medium}>{friends.length} friends</Typography>
                     </Box>   
                 </FlexBetween>
-                <ManageAccountOutlined/>
+                <ManageAccountsOutlined/>
                 </FlexBetween>
+                
                 <Divider/>
 
                 {/*SECOND ROW*/}
-                <Box gap="1rem">
+                <Box p="1rem 0">
                     <Box display="flex" align="center" gap="1rem" mb="0.5rem">
                         <LocationOnOutlined fontSize="large" sx={{color: main}}/>
-                        <Typography color={medium} location></Typography>
+                        <Typography color={medium}> {location}</Typography>
                     </Box>
                     <Box display="flex" align="center" gap="1rem">
-                        <WorkoutlineOnOutlined fontSize="large" sx={{color: main}}/>
-                        <Typography color={medium} occupation></Typography>
+                        <WorkOutlineOutlined fontSize="large" sx={{color: main}}/>
+                        <Typography color={medium}>{occupation}</Typography>
                     </Box>
                 </Box>
+                
                 <Divider/>
 
                 {/*THIRD ROW*/}
@@ -99,14 +102,15 @@ const UserWidget = ({ userId, picturePath }) => {
                             {viewedProfile}
                         </Typography>
                     </FlexBetween>
-                    <FlexBetween mb="0.5rem">
+                    <FlexBetween>
                         <Typography color={medium}>Impressions on your post</Typography>
                         <Typography color={main} fontWeight="500">
                             {impressions}
                         </Typography>
                     </FlexBetween>
                 </Box>
-                <Divider/>
+
+                <Divider />
                 
                 {/*FOURTH ROW*/}
                 <Box p="1rem 0">

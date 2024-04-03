@@ -30,12 +30,12 @@ const MyPostWidget = ({ picturePath }) => {
     const [isImage, setIsImage] = useState(false);
     const [image, setImage] = useState(null);
     const [post, setPost] = useState("");
-    const { palatte } = useTheme();
+    const { palette } = useTheme();
     const { _id } = useSelector((state) => state.user);
     const token = useSelector((state) => state.token);
     const isNonMobileScreens = useMediaQuery("(min-width: 1000px)");
-    const mediumMain = palatte.neutrul.mediumMain;
-    const medium = palatte.neutrul.medium;
+    const mediumMain = palette.neutrul.mediumMain;
+    const medium = palette.neutrul.medium;
 
     const handlePost = async () => {
         const formData = new FormData();
@@ -67,7 +67,7 @@ const MyPostWidget = ({ picturePath }) => {
                 value={post}
                 sx={{
                     width: "100%",
-                    backgroundColor: palatte.neutrul.light,
+                    backgroundColor: palette.neutrul.light,
                     borderRadius: "2rem",
                     padding: "1rem 2rem"
                 }}
@@ -83,15 +83,15 @@ const MyPostWidget = ({ picturePath }) => {
                     <Dropzone
                                     acceptedFiles=".jpg, .jpeg, .png"
                                     multiple={false}
-                                    onDrop={(acceptedFiles) =>
-                                        setFieldValue("picture", acceptedFiles[0])}
+                                    onDrop={(acceptedFiles) => setImage(acceptedFiles[0])}
                                     >
-                                        {({getRootProps, getInputProps }) =>(
+                                        {({ getRootProps, getInputProps }) => (
                                             <FlexBetween>
                                             <Box
                                             {...getRootProps()}
                                             border={`2px dashed ${palette.primary.main}`}
                                             p="1rem"
+                                            width="100%"
                                             sx={{ "&:hover": {cursor: "pointer"} }}
                                             >
                                             <input {...getInputProps()} />
@@ -99,7 +99,7 @@ const MyPostWidget = ({ picturePath }) => {
                                                 <p>Add Image Here</p>
                                             ) : (
                                                 <FlexBetween>
-                                                    <Typography>{picture.name}</Typography>
+                                                    <Typography>{image.name}</Typography>
                                                     <EditOutlined/>
                                                 </FlexBetween>     
                                             )}
@@ -159,8 +159,8 @@ const MyPostWidget = ({ picturePath }) => {
                     disabled={!post}
                     onClick={handlePost}
                     sx={{
-                        color: palatte.background.alt,
-                        backgroundColor: palatte.primary.main,
+                        color: palette.background.alt,
+                        backgroundColor: palette.primary.main,
                         borderRadius: "3rem"
                     }}
                     >

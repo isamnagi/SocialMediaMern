@@ -4,6 +4,8 @@ import Form from "./Form";
 const LoginPage = () => {
     const theme = useTheme();
     const isNonMobileScreens = useMediaQuery("(min-width: 1000px");
+    
+    return (
     <Box>
         <Box 
         width="100%" 
@@ -33,6 +35,6 @@ const LoginPage = () => {
             <Form />
         </Box>
     </Box>
-    return <div>loginpage</div>
-}
+    );
+};
 export default LoginPage;

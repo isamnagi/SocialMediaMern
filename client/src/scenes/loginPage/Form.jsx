@@ -13,7 +13,7 @@ import * as yup from "yup";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setLogin } from "state";
-import DropZone from "react-dropzone";
+import Dropzone from "react-dropzone";
 import FlexBetween from "components/FlexBetween";
 
 const registerSchema = yup.object().shape({
@@ -32,18 +32,18 @@ const loginSchema = yup.object().shape({
 });
 
 const initialValuesRegister = {
-    firstName: " ",
-    lastName: " ",
-    email: " ",
-    password: " ",
-    location: " ",
-    occupation: " ",
-    picture: " ",
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+    location: "",
+    occupation: "",
+    picture: "",
 };
 
 const initialValuesLogin = {
-    email: " ",
-    password: " ",
+    email: "",
+    password: "",
 };
 
 const Form = () => {
@@ -51,7 +51,7 @@ const Form = () => {
     const { palette } = useTheme();
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const isNonMoible = useMediaQuery("(min-width:600px");
+    const isNonMobile = useMediaQuery("(min-width:600px)");
     const isLogin = pageType === "login";
     const isRegister = pageType === "register";
 
@@ -78,17 +78,17 @@ const Form = () => {
         }
     };
 
-    const login = async (values, onSubitProps) => {
+    const login = async (values, onSubmitProps) => {
         const loggedInResponse = await fetch(
             "http://localhost:3001/auth/login",
             {
                 method: "POST",
-                headers: { "Contenet-Type": "application/json"},
+                headers: { "Content-Type": "application/json"},
                 body: JSON.stringify(values),
             }
         );
         const loggedIn = await loggedInResponse.json();
-        onSubitProps.resetForm();
+        onSubmitProps.resetForm();
         if (loggedIn) {
             dispatch(
                 setLogin({
@@ -124,9 +124,9 @@ const Form = () => {
                     <Box
                         display="grid"
                         gap="30px"
-                        gridTemplateColoumns="repeat(4, minmax(0, 1fr))"
+                        gridTemplateColumns="repeat(4, minmax(0, 1fr))"
                         sx={{
-                            "& > div" : { gridColumn: isNonMoible ? undefined : "span 4"}
+                            "& > div" : { gridColumn: isNonMobile ? undefined : "span 4"}
                         }}
                     >
                         {isRegister && (
@@ -135,14 +135,14 @@ const Form = () => {
                                     label="First Name"
                                     onBlur={handleBlur}
                                     onChange={handleChange}
-                                    value={values.firstName}
+                                    value={values.firstName || ""}
                                     name="firstName"
                                     error={Boolean(touched.firstName) && Boolean(errors.firstName)}
                                     helperText={touched.firstName && errors.firstName}
                                     sx={{ gridColumn: "span 2"}}
                                 />
                                 <TextField
-                                    label="last Name"
+                                    label="Last Name"
                                     onBlur={handleBlur}
                                     onChange={handleChange}
                                     value={values.lastName}
@@ -177,7 +177,7 @@ const Form = () => {
                                 borderRadius="5px"
                                 p="1rem"
                                 >
-                                    <DropZone
+                                    <Dropzone
                                     acceptedFiles=".jpg, .jpeg, .png"
                                     multiple={false}
                                     onDrop={(acceptedFiles) =>
@@ -201,7 +201,7 @@ const Form = () => {
                                             )}
                                             </Box>
                                         )}
-                                        </DropZone>
+                                        </Dropzone>
                                 </Box>
                             </>
                         )}
