@@ -59,7 +59,7 @@ const Form = () => {
         //this allllows us to send form info with image
         const formData = new FormData();
         for (let value in values) {
-            formData.append(value, values[value])
+            formData.append(value, values[value]);
         }
         formData.append('picturePath', values.picture.name);
 
@@ -68,6 +68,7 @@ const Form = () => {
             {
                 method: "POST",
                 body: formData,
+                
             }
         );
         const savedUser = await savedUserResponse.json();
@@ -79,14 +80,11 @@ const Form = () => {
     };
 
     const login = async (values, onSubmitProps) => {
-        const loggedInResponse = await fetch(
-            "http://localhost:3001/auth/login",
-            {
+        const loggedInResponse = await fetch("http://localhost:3001/auth/login", {
                 method: "POST",
                 headers: { "Content-Type": "application/json"},
                 body: JSON.stringify(values),
-            }
-        );
+            });
         const loggedIn = await loggedInResponse.json();
         onSubmitProps.resetForm();
         if (loggedIn) {
@@ -98,12 +96,13 @@ const Form = () => {
             );
             navigate("/home");
         }
-    }
+    };
     
-    const handleFormSubmit = async(values, onSubmitProps) => {
+    const handleFormSubmit = async (values, onSubmitProps) => {
         if (isLogin) await login(values, onSubmitProps);
         if (isRegister) await register(values, onSubmitProps);
     };
+    
     return (
         <Formik
         onSubmit={handleFormSubmit}
@@ -126,7 +125,7 @@ const Form = () => {
                         gap="30px"
                         gridTemplateColumns="repeat(4, minmax(0, 1fr))"
                         sx={{
-                            "& > div" : { gridColumn: isNonMobile ? undefined : "span 4"}
+                            "& > div" : { gridColumn: isNonMobile ? undefined : "span 4"},
                         }}
                     >
                         {isRegister && (
@@ -137,7 +136,9 @@ const Form = () => {
                                     onChange={handleChange}
                                     value={values.firstName || ""}
                                     name="firstName"
-                                    error={Boolean(touched.firstName) && Boolean(errors.firstName)}
+                                    error={
+                                        Boolean(touched.firstName) && Boolean(errors.firstName)
+                                    }
                                     helperText={touched.firstName && errors.firstName}
                                     sx={{ gridColumn: "span 2"}}
                                 />
@@ -167,7 +168,9 @@ const Form = () => {
                                     onChange={handleChange}
                                     value={values.occupation || ""}
                                     name="occupation"
-                                    error={Boolean(touched.occupation) && Boolean(errors.occupation)}
+                                    error={
+                                        Boolean(touched.occupation) && Boolean(errors.occupation)
+                                    }
                                     helperText={touched.occupation && errors.occupation}
                                     sx={{ gridColumn: "span 4"}}
                                 />
@@ -181,7 +184,8 @@ const Form = () => {
                                     acceptedFiles=".jpg, .jpeg, .png"
                                     multiple={false}
                                     onDrop={(acceptedFiles) =>
-                                        setFieldValue("picture", acceptedFiles[0])}
+                                        setFieldValue("picture", acceptedFiles[0])
+                                    }
                                     >
                                         {({getRootProps, getInputProps }) =>(
                                             <Box
@@ -267,5 +271,5 @@ const Form = () => {
             )}
         </Formik>
     );
-}
+};
 export default Form;
