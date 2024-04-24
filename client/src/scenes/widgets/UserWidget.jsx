@@ -20,7 +20,8 @@ const UserWidget = ({ userId, picturePath }) => {
     const dark = palette.neutral.dark;
     const medium = palette.neutral.medium
     const main = palette.neutral.main;
-     const getUser = async () => {
+    
+    const getUser = async () => {
         const response = await fetch(`http://localhost:3001/users/${userId}`,
         {
             method: "GET",
@@ -32,7 +33,7 @@ const UserWidget = ({ userId, picturePath }) => {
 
      useEffect(() =>{
         getUser();
-     }, []) //eslint-disable-line react-hooks/exhaustive-deps
+     }, []); //eslint-disable-line react-hooks/exhaustive-deps
 
      if (!user) {
         return null;
@@ -54,7 +55,7 @@ const UserWidget = ({ userId, picturePath }) => {
             <FlexBetween
                 gap="0.5rem"
                 pb="1.1rem"
-                onClick={() => navigate(`profile/${userId}`)}
+                onClick={() => navigate(`/profile/${userId}`)}
             >
                 <FlexBetween gap="1rem">
                     <UserImage image={picturePath}/>
@@ -66,13 +67,15 @@ const UserWidget = ({ userId, picturePath }) => {
                         sx={{
                             "&:hover":  {
                                 color: palette.primary.light,
-                                cursor: "pointer"
+                                cursor: "pointer",
                             },
                         }}
                         >
                             {firstName} {lastName}
                         </Typography>
-                        <Typography color={medium}>{friends.length} friends</Typography>
+
+
+                        <Typography color={medium}>{friends ? friends.length : 0} friends</Typography>
                     </Box>   
                 </FlexBetween>
                 <ManageAccountsOutlined/>

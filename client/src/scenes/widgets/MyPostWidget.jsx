@@ -34,8 +34,8 @@ const MyPostWidget = ({ picturePath }) => {
     const { _id } = useSelector((state) => state.user);
     const token = useSelector((state) => state.token);
     const isNonMobileScreens = useMediaQuery("(min-width: 1000px)");
-    const mediumMain = palette.neutrul.mediumMain;
-    const medium = palette.neutrul.medium;
+    const mediumMain = palette.neutral.mediumMain;
+    const medium = palette.neutral.medium;
 
     const handlePost = async () => {
         const formData = new FormData();
@@ -67,7 +67,7 @@ const MyPostWidget = ({ picturePath }) => {
                 value={post}
                 sx={{
                     width: "100%",
-                    backgroundColor: palette.neutrul.light,
+                    backgroundColor: palette.neutral.light,
                     borderRadius: "2rem",
                     padding: "1rem 2rem"
                 }}

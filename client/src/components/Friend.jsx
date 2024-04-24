@@ -13,11 +13,11 @@ const Friend = ({ friendId, name, subtitle, userPicturePath }) => {
     const token = useSelector((state) => state.token);
     const friends = useSelector((state) => state.user.friends);
 
-    const { palatte } = useTheme();
-    const primaryLight = palatte.primary.light;
-    const primaryDark = palatte.primary.dark;
-    const main = palatte.neutral.main;
-    const medium = palatte.neutral.medium;
+    const { palette } = useTheme();
+    const primaryLight = palette.primary.light;
+    const primaryDark = palette.primary.dark;
+    const main = palette.neutral.main;
+    const medium = palette.neutral.medium;
 
     const isFriend = friends.find((friend) => friend._id === friendId);
 
@@ -29,7 +29,7 @@ const Friend = ({ friendId, name, subtitle, userPicturePath }) => {
                 headers: {
                     Authorization: `Bearer ${token}`,
                     "Content-Type": "application/json",
-                }
+                },
             }
         );
         const data = await response.json();
@@ -52,7 +52,7 @@ const Friend = ({ friendId, name, subtitle, userPicturePath }) => {
                         fontWeight="500"
                         sx={{
                             "&:hover": {
-                                color: palatte.primary.light,
+                                color: palette.primary.light,
                                 cursor: "pointer"
                             }
                         }}
@@ -76,7 +76,7 @@ const Friend = ({ friendId, name, subtitle, userPicturePath }) => {
                 )}
             </IconButton>
         </FlexBetween>
-    )
+    );
 };
 
 export default Friend;

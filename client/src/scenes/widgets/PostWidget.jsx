@@ -30,9 +30,9 @@ const PostWidget = ({
     const isLiked = Boolean(likes[loggedInUserId]);
     const likeCount = Object.keys(likes).length
 
-    const { palatte } = useTheme();
-    const main = palatte.neutral.main;
-    const primary = palatte.primary.medium;
+    const { palette } = useTheme();
+    const main = palette.neutral.main;
+    const primary = palette.primary.medium;
 
     const patchLike = async () => {
         const response = await fetch(`http://localhost:3001/posts/${postId}/like`,  {
@@ -64,7 +64,7 @@ return (
                 height="auto"
                 alt="post"
                 style={{borderRadius:"0.75rem", marginTop:"0.75rem"}}
-                src={`http://localhost:3001/assests/${picturePath}`}
+                src={`http://localhost:3001/assets/${picturePath}`}
             />
         )}
         <FlexBetween mt="0.25rem">
