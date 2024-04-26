@@ -26,7 +26,7 @@
                 if(state.user) {
                     state.user.friends = action.payload.friends;
                 } else {
-                    console.error("user friends does not exist")
+                    console.error("user friends does not exist");
                 }
             },
             setPosts: (state, action) => {
@@ -38,9 +38,9 @@
                     return post;
                 });
                 state.posts = updatedPosts;
-            }
-        }
-    })
+            },
+        },
+    });
 
     export const { setMode, setLogin, setLogout, setFriends, setPosts, setPost } = authSlice.actions;
     export default authSlice.reducer;

@@ -8,7 +8,7 @@ import {
     MenuItem,
     FormControl,
     useTheme,
-    useMediaQuery
+    useMediaQuery,
 } from "@mui/material";
 import {
     Search,
@@ -18,7 +18,7 @@ import {
     Notifications,
     Help,
     Menu,
-    Close
+    Close,
 } from "@mui/icons-material";
 import { useDispatch, useSelector } from "react-redux";
 import { setMode, setLogout } from "state";
@@ -101,14 +101,15 @@ const Navbar = () => {
                             },
                             "& .MuiSelect-select:focus" : {
                             backgroundColor: neutralLight
-                        }
+                        },
                         }}
                         input={<InputBase />}
-                        />
+                        >
                             <MenuItem value={fullName}>
                                 <Typography>{fullName}</Typography>
                             </MenuItem>
                             <MenuItem onClick={() => dispatch(setLogout())}>Log Out</MenuItem>
+                            </Select>
                     </FormControl>
                 </FlexBetween>
             ) : (

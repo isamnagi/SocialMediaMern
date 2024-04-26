@@ -2,7 +2,7 @@ import {
     ChatBubbleOutlineOutlined, 
     FavoriteBorderOutlined, 
     FavoriteOutlined,
-    ShareOutlined 
+    ShareOutlined, 
 } from "@mui/icons-material";
 import { Box, Divider, IconButton, Typography, useTheme } from "@mui/material";
 import FlexBetween from "components/FlexBetween";
@@ -28,22 +28,22 @@ const PostWidget = ({
     const token = useSelector((state) => state.token);
     const loggedInUserId = useSelector((state) => state.user._id);
     const isLiked = Boolean(likes[loggedInUserId]);
-    const likeCount = Object.keys(likes).length
+    const likeCount = Object.keys(likes).length;
 
     const { palette } = useTheme();
     const main = palette.neutral.main;
-    const primary = palette.primary.medium;
+    const primary = palette.primary.main;
 
     const patchLike = async () => {
         const response = await fetch(`http://localhost:3001/posts/${postId}/like`,  {
             method: "PATCH",
             headers: {
                 Authorization: `Bearer ${token}`,
-                "Content-Type": "application.json",
+                "Content-Type": "application/json",
             },
-            body: JSON.stringify({ userId: loggedInUserId })
+            body: JSON.stringify({ userId: loggedInUserId }),
         });
-        const updatedPost = response.json();
+        const updatedPost = await response.json();
         dispatch(setPost({ post: updatedPost }));
     };
 
